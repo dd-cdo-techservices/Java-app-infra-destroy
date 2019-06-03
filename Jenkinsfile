@@ -17,13 +17,13 @@ pipeline {
     
     stage('Terraform plan') {
       steps {
-        sh 'terraform plan -out tfplanout'
+        sh 'terraform plan -destroy tfplanout'
       }
     }
         
     stage('apply') {
       steps {
-        sh 'terraform destroy'
+        sh 'terraform destroy -auto-approve'
         cleanWs()
       }
     }
